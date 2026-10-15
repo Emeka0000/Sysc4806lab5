@@ -1,0 +1,44 @@
+# SYSC 4806 Lab 4
+# 1. Start AddressBookApplication (runs on http://localhost:8080)
+# 2. Run requests 1 to 5 in order to create an address book, two buddies, and link them
+# 3. Request 6 shows the JSON, request 7 (or the URL below) shows the Thymeleaf page
+#    http://localhost:8080/addressbook/{id}   (id = the address book's id, 1 here)
+# Note: the database is in-memory (H2), so data is lost when the app stops. Rerun requests 1 to 5 after each start.
+
+### 1. Create an address book
+POST http://localhost:8080/api/addressBooks
+Content-Type: application/json
+
+{}
+
+### 2. Create a buddy
+POST http://localhost:8080/api/buddyInfoes
+Content-Type: application/json
+
+{"name": "Alice Smith", "phoneNumber": "613-555-0101"}
+
+### 3. Create another buddy
+POST http://localhost:8080/api/buddyInfoes
+Content-Type: application/json
+
+{"name": "Bob Chen", "phoneNumber": "613-555-0102"}
+
+### 4. Add buddy 1 to address book 1
+POST http://localhost:8080/api/addressBooks/1/buddies
+Content-Type: text/uri-list
+
+http://localhost:8080/api/buddyInfoes/1
+
+### 5. Add buddy 2 to address book 1
+POST http://localhost:8080/api/addressBooks/1/buddies
+Content-Type: text/uri-list
+
+http://localhost:8080/api/buddyInfoes/2
+
+### 6. Check the result as JSON
+GET http://localhost:8080/api/addressBooks/1/buddies
+
+### 7. View the address book in the browser (Thymeleaf page)
+# Open this URL in a browser after running requests 1 to 5:
+# http://localhost:8080/addressbook/1
+GET http://localhost:8080/addressbook/1
