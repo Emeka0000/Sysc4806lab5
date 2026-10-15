@@ -37,4 +37,9 @@ class BuddyInfoTest {
         assertEquals(buddy, same);
         assertNotEquals(buddy, different);
     }
+    @Test
+    void testAddress() {
+        BuddyInfo b = new BuddyInfo("Alice Smith", "613-555-0101", "1 Main St");
+        assertEquals("1 Main St", b.getAddress());
+    }
 }

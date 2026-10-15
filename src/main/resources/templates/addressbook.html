@@ -12,12 +12,14 @@
     <tr>
         <th>Name</th>
         <th>Phone Number</th>
+        <th>Address</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="buddy : ${addressBook.buddies}">
         <td th:text="${buddy.name}">Name</td>
         <td th:text="${buddy.phoneNumber}">Phone</td>
+        <td th:text="${buddy.address}">Address</td>
     </tr>
     </tbody>
 </table>
